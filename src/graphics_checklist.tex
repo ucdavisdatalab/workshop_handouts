@@ -1,0 +1,162 @@
+% To build this file:
+%
+%   latexmk -lualatex --shell-escape graphics_checklist.tex
+%
+
+\documentclass{article}
+
+\usepackage[l2tabu,orthodox]{nag}
+
+% ----- Type & Spacing (==
+% Set English hyphenation rules.
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+% Font selection for XeTex and LuaLatex.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Adjust micro-typography.
+\usepackage{microtype}
+\frenchspacing
+
+% Place all subscripts at the same height.
+\usepackage{subdepth}
+
+% Fix footnote kerning.
+\usepackage{fnpct}
+
+% 1-inch margins.
+\usepackage[margin=1in]{geometry}
+
+% Use blank lines instead of indentation to mark paragraphs.
+\usepackage{parskip}
+% ==)
+
+% ----- Page Design (==
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\sffamily\large\bfseries}{}{0em}{}
+\titlespacing{\section}{0em}{0.5ex}{0.5ex}
+
+\titleformat{\subsection}[hang]{\sffamily\normalsize\bfseries}{}{0em}{}
+\titlespacing{\subsection}{0em}{0.5ex}{0.5ex}
+
+\usepackage{enumitem}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+% ==)
+
+% ----- Links & Color (==
+\usepackage{hyperref}
+% ==)
+
+% ----- Citations (==
+\usepackage[
+  backend = biber
+  , firstinits = false
+  , style = authoryear
+]{biblatex}
+\renewcommand*{\bibnamedash}{------. }
+\setlength{\bibitemsep}{\parskip}
+\setlength{\bibhang}{2em}
+
+\addbibresource{references.bib}
+% ==)
+
+% ----- Figures (==
+\usepackage{longtable}
+\usepackage{booktabs}
+
+% Highlight code with minted.
+\usepackage[newfloat, cachedir=.minted]{minted}
+
+% Use old-style numerals for line numbering.
+\renewcommand{\theFancyVerbLine}{
+  \sffamily{\scriptsize\oldstylenums{\arabic{FancyVerbLine}}}
+}
+
+%\definecolor{mintedbg}{rgb}{0.95, 0.95, 0.95}
+\setminted{
+  %resetmargins = true
+  xleftmargin = 4em
+  , xrightmargin = 2em
+  , tabsize = 4
+  % ---
+  %, bgcolor = mintedbg
+  %, frame = leftline
+  %, framesep = 0.75em
+  % ---
+  , mathescape = true
+  , python3 = true
+  , numbers = left
+  , stepnumber = 1
+  , numbersep = 1em
+  , showspaces = false
+  , escapeinside = ~~
+}
+
+\newcommand{\code}[1]{\mintinline{text}{#1}}
+% ==)
+
+% ----- Notation (==
+\usepackage{amsmath}
+\usepackage{amssymb}
+% ==)
+
+\title{Graphics Checklist}
+\author{STA 141A}
+\date{}
+
+\begin{document}
+\maketitle{}
+
+First, make sure you've chosen an appropriate graphic. The table below has
+\textit{suggestions}. Sometimes other graphics may be more appropriate.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{rrl}
+First Feature & Second Feature & Plot                          \\
+\midrule
+categorical   &                & bar, dot                      \\
+categorical   & categorical    & bar, dot, mosaic              \\
+numerical     &                & box, density, histogram       \\
+numerical     & categorical    & box, density                  \\
+numerical     & numerical      & line, scatter, smooth scatter \\
+\end{tabular}
+\end{table}
+
+Next, go through this checklist with each graphic you plan to use:
+
+\begin{checklist}
+\item \textbf{Does the graphic convey important information?} Don't include
+  graphics that are uninformative or redundant.
+\item \textbf{Title?} Make sure the title explains what the graphic shows.
+\item \textbf{Axis labels?} Label the axes in plain language (no variable
+  names!).
+\item \textbf{Axis units?} Label the axes with units (inches, dollars, etc).
+\item \textbf{Legend?} Any graphic that shows two or more categories coded by
+  style or color must include a legend.
+\item \textbf{Appropriate scales and limits?} Make sure the scales and limits
+  of the axes do not lead people to incorrect conclusions. For side-by-side
+  graphics or graphics that viewers will compare, use identical scales and
+  limits.
+\item \textbf{No overplotting?} Scatter plots where many plot points overlap
+  hide the actual patterns in the data. Make the points smaller or use a
+  two-dimensional density plot (a smooth scatter plot) instead.
+\item \textbf{No more than 5 lines?} Line plots with more than 5 lines risk
+  becoming hard-to-read ``spaghetti'' plots. Generally a line plot with more
+  than 5 lines should be split into multiple plots with fewer lines. If the
+  x-axis is discrete, consider using a heat map instead.
+\item \textbf{Should it be a dot plot?} Pie plots are hard to read and bar
+  plots don't use space efficiently \autocite{cleveland90,heer10}. Generally a
+  dot plot is a better choice.
+\item \textbf{Print safe?} Design graphics to be legible in black \& white.
+  Color is great, but use point and line styles to distinguish groups in
+  addition to color. Also try to choose colors that are accessible to
+  colorblind people. The \code{RColorBrewer} and \code{viridis} packages can
+  help with choosing colors.
+\end{checklist}
+
+\end{document}
