@@ -1,8 +1,11 @@
-Graphics Checklist
-==================
+Data Visualization Guidelines
+=============================
 
-First, make sure you've chosen an appropriate graphic. The table below
-has *suggestions*. Sometimes other graphics may be more appropriate.
+Choosing a Plot Type
+--------------------
+
+First, make sure you've chosen an appropriate plot type. The table below has
+*suggestions*. Sometimes other plot types may be more appropriate.
 
 First Feature | Second Feature | Plot
 ------------- | -------------- | ----
@@ -10,41 +13,51 @@ categorical   |                | bar, dot
 categorical   | categorical    | bar, dot, mosaic
 numerical     |                | box, density, histogram
 numerical     | categorical    | box, density
-numerical     | numerical      | line, scatter, smooth scatter
+numerical     | numerical      | line, scatter, heatmap
 
-Next, go through this checklist with each graphic you plan to use:
+For three or more features, use point shapes, line styles, colors, or facets. 
 
-* [ ] **Does the graphic convey important information?** Don't include graphics
-  that are uninformative or redundant.
 
-* [ ] **Title?** Make sure the title explains what the graphic shows.
+Checklist
+---------
+
+Next, go through this checklist with each visualization you plan to use for
+communications:
+
+* [ ] **Does the visualization present a finding?** Don't include plots that
+  are uninformative or redundant.
+
+* [ ] **Title?** Make sure the title explains what the visualization shows.
 
 * [ ] **Axis labels?** Label the axes in plain language (no variable names!).
 
 * [ ] **Axis units?** Label the axes with units (inches, dollars, etc).
 
-* [ ] **Legend?** Any graphic that shows two or more categories coded by style
-  or color must include a legend.
+* [ ] **Legend?** Any plot that shows two or more groups coded by style or
+  color must include a legend.
 
 * [ ] **Appropriate scales and limits?** Make sure the scales and limits of the
-  axes do not lead people to incorrect conclusions. For side-by-side graphics
-  or graphics that viewers will compare, use identical scales and limits.
+  axes do not lead people to incorrect conclusions. For side-by-side plots or
+  plots that viewers will compare, use identical scales and limits.
 
-* [ ] **No overplotting?** Scatter plots where many plot points overlap hide
-  the actual patterns in the data. Make the points smaller or use a
-  two-dimensional density plot (a smooth scatter plot) instead.
+* [ ] **Is the data hiding the message?** Sometimes using a *faithful* sample
+  is more revealing than all of the data. In scatter plots, overlapping points
+  can hide patterns in the data. Take a sample, make the points smaller, or use
+  a two-dimensional density plot (a smooth scatter plot) instead.
 
-* [ ] **No more than 5 lines?** Line plots with more than 5 lines risk becoming
-  hard-to-read "spaghetti" plots. Generally a line plot with more than 5 lines
-  should be split into multiple plots with fewer lines. If the x-axis is
-  discrete, consider using a heat map instead.
+* [ ] **Are there too many details on the plot?** A plot with too many details
+  can be overwhelming and obscure the story the data is trying to tell. If a
+  plot shows more than 5 groups, consider whether there's a sensible way to use
+  faceting to break the plot into multiple subplots.
 
-* [ ] **Should it be a dot plot?** Pie plots are hard to read and bar plots
-  don't use space efficiently [@cleveland90; @heer10]. Generally a dot plot is
+* [ ] **Does it use geometry efficiently?** Carefully consider whether the
+  basic graphical elements of each plot match the data type and use space
+  efficiently. For example, pie plots are hard to read. Generally a dot plot is
   a better choice.
 
-* [ ] **Print safe?** Design graphics to be legible in black & white. Color is
-  great, but use point and line styles to distinguish groups in addition to
-  color. Also try to choose colors that are accessible to colorblind people.
-  The `RColorBrewer`{.text} and `viridis`{.text} packages can help with
+* [ ] **Accessible and print safe?** Design visualizations to be legible to a
+  diverse audience. Use point, line, and fill styles to distinguish groups in
+  addition to color so that visualizations are accessible to colorblind people.
+  Also consider whether people will print your visualization in black and
+  white. The `RColorBrewer`{.text} and `viridis`{.text} packages can help with
   choosing colors.
