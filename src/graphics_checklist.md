@@ -1,3 +1,11 @@
+---
+geometry: margin=1in
+header-includes:
+  - \pagenumbering{gobble}
+---
+
+![](https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png){width=25%}
+
 Data Visualization Guidelines
 =============================
 
