@@ -18,10 +18,10 @@ First, make sure you've chosen an appropriate plot type. The table below has
 First Feature | Second Feature | Plot
 ------------- | -------------- | ----
 categorical   |                | bar, dot
-categorical   | categorical    | bar, dot, mosaic
+categorical   | categorical    | bar, dot, heatmap, mosaic
 numerical     |                | box, density, histogram
 numerical     | categorical    | box, density
-numerical     | numerical      | line, scatter, heatmap
+numerical     | numerical      | line, scatter, smooth scatter
 
 For three or more features, use point shapes, line styles, colors, or facets. 
 
